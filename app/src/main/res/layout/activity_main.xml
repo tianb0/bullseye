@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/instruction_text"
+        style="@style/instruction_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/target_value_text"
-        android:textSize="24sp"
+        style="@style/big_text"
         app:layout_constraintBottom_toTopOf="@+id/seekBar"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
@@ -115,6 +116,7 @@
             android:id="@+id/scoreTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/game_stats_text"
             android:text="0" />
     </LinearLayout>
 
@@ -140,6 +142,7 @@
             android:id="@+id/roundTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/game_stats_text"
             android:text="0" />
     </LinearLayout>
 
