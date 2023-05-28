@@ -2,7 +2,6 @@ package io.tianb0.bullseye
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.SeekBar
 import androidx.appcompat.app.AlertDialog
 import io.tianb0.bullseye.databinding.ActivityMainBinding
@@ -14,14 +13,24 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private var sliderValue = 0
+    private var targetValue = Random.nextInt(1, 100)
+    private var totalScore = 0
+    private var round = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        reset()
+
         binding.hitMeButton.setOnClickListener {
-            showResultDialog()
+            val point = calculatePoint()
+            showResultDialog(point)
+            totalScore += point
+            binding.scoreTextView.text = totalScore.toString()
+            round += 1
+            binding.roundTextView.text = round.toString()
         }
 
         binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -33,12 +42,16 @@ class MainActivity : AppCompatActivity() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) { }
         })
 
+        binding.startOverButton.setOnClickListener {
+            reset()
+        }
+
         supportActionBar?.hide()
     }
 
-    private fun showResultDialog() {
+    private fun showResultDialog(currentScore: Int) {
         val dialogTitle = getString(R.string.result_dialog_title)
-        val dialogMessage = getString(R.string.result_dialog_message, sliderValue, calculatePoint())
+        val dialogMessage = getString(R.string.result_dialog_message, sliderValue, currentScore)
 
         AlertDialog.Builder(this)
             .setTitle(dialogTitle)
@@ -51,8 +64,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculatePoint(): Int {
-        val max = 100
-        val taget = Random.nextInt(1, 100)
-        return max - abs(taget - sliderValue)
+        val fullScore = 100
+        return fullScore - abs(targetValue - sliderValue)
+    }
+
+    private fun reset() {
+        sliderValue = 0
+        totalScore = 0
+        round = 0
+        targetValue = Random.nextInt(1, 100)
+
+        binding.scoreTextView.text = totalScore.toString()
+        binding.roundTextView.text = round.toString()
+        binding.targetTextView.text = targetValue.toString()
+        binding.seekBar.progress = sliderValue
     }
 }

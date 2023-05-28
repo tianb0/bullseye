@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/startOverButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/start_over"
@@ -99,11 +99,11 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintBottom_toBottomOf="@+id/startOverButton"
         app:layout_constraintEnd_toStartOf="@+id/roundGroup"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button2">
+        app:layout_constraintStart_toEndOf="@+id/startOverButton"
+        app:layout_constraintTop_toTopOf="@+id/startOverButton">
 
         <TextView
             android:id="@+id/scoreLabel"
