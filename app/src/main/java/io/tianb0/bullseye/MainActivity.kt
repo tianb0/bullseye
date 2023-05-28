@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             reset()
         }
 
-        supportActionBar?.hide()
+//        supportActionBar?.hide() // use fullscreen theme for this activity instead
     }
 
     private fun showResultDialog(currentScore: Int) {
