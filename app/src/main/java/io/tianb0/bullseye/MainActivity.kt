@@ -2,15 +2,57 @@ package io.tianb0.bullseye
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.SeekBar
+import androidx.appcompat.app.AlertDialog
 import io.tianb0.bullseye.databinding.ActivityMainBinding
+import kotlin.math.abs
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private var sliderValue = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.hitMeButton.setOnClickListener {
+            showResultDialog()
+        }
+
+        binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                sliderValue = progress
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) { }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) { }
+        })
+
+        supportActionBar?.hide()
+    }
+
+    private fun showResultDialog() {
+        val dialogTitle = getString(R.string.result_dialog_title)
+        val dialogMessage = getString(R.string.result_dialog_message, sliderValue, calculatePoint())
+
+        AlertDialog.Builder(this)
+            .setTitle(dialogTitle)
+            .setMessage(dialogMessage)
+            .setPositiveButton(R.string.result_dialog_button_text) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .show()
+    }
+
+    private fun calculatePoint(): Int {
+        val max = 100
+        val taget = Random.nextInt(1, 100)
+        return max - abs(taget - sliderValue)
     }
 }
