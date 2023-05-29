@@ -1,5 +1,6 @@
 package io.tianb0.bullseye
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SeekBar
@@ -46,6 +47,10 @@ class MainActivity : AppCompatActivity() {
             reset()
         }
 
+        binding.infoButton.setOnClickListener {
+            navigateToAboutScreen()
+        }
+
 //        supportActionBar?.hide() // use fullscreen theme for this activity instead
     }
 
@@ -78,5 +83,10 @@ class MainActivity : AppCompatActivity() {
         binding.roundTextView.text = round.toString()
         binding.targetTextView.text = targetValue.toString()
         binding.seekBar.progress = sliderValue
+    }
+
+    private fun navigateToAboutScreen() {
+        val intent = Intent(this, AboutActivity::class.java)
+        startActivity(intent)
     }
 }

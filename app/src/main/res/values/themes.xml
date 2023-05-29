@@ -35,4 +35,11 @@
     <style name="big_text">
         <item name="android:textSize">32dp</item>
     </style>
+
+    <style name="about_bullseye_text">
+        <item name="android:textAlignment">center</item>
+        <item name="android:lineSpacingExtra">12sp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+    </style>
 </resources>
