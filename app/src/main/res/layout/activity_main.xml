@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/bgImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -32,6 +43,11 @@
 
     <SeekBar
         android:id="@+id/seekBar"
+        android:thumb="@drawable/nub"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:splitTrack="false"
+        android:progressDrawable="@drawable/seekbar_progress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -66,28 +82,33 @@
         android:id="@+id/hitMeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         android:text="@string/hit_me_button_text"
+        app:cornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <ImageButton
         android:id="@+id/startOverButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/start_over"
+        android:background="@drawable/circular_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/refresh_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/scoreGroup"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hitMeButton" />
 
-    <Button
+    <ImageButton
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/info"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/info_24"
+        android:background="@drawable/circular_button"
         app:layout_constraintBottom_toBottomOf="@+id/roundGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
